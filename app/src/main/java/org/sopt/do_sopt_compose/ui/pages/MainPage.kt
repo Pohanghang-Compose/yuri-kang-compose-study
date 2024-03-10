@@ -18,12 +18,21 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import org.sopt.do_sopt_compose.R
 import org.sopt.do_sopt_compose.ui.components.ProfileImage
 import org.sopt.do_sopt_compose.ui.components.TitleText
+import org.sopt.do_sopt_compose.ui.pages.states.MainPageState
+import org.sopt.do_sopt_compose.ui.pages.viewmodels.MainViewModel
+import org.sopt.do_sopt_compose.ui.pages.viewmodels.SignUpViewModel
 
 @Composable
-fun MainPage() {
+fun MainPage(
+    state: MainPageState = MainPageState(),
+) {
+    val mainViewModel: MainViewModel = viewModel()
+    mainViewModel.updateMainStatus()
+
     Scaffold(
         topBar = { TitleText(text = "홈 화면") },
         content = {
@@ -45,7 +54,7 @@ fun MainPage() {
                                 modifier = Modifier.padding(start = 20.dp, end = 10.dp),
                             )
                             Text(
-                                text = "유리",
+                                text = state.nickname,
                                 modifier = Modifier.padding(horizontal = 20.dp),
                                 style = MaterialTheme.typography.displaySmall,
                                 color = Color.Black,
@@ -68,7 +77,7 @@ fun MainPage() {
                             modifier = Modifier.padding(horizontal = 20.dp, vertical = 15.dp),
                         )
                         Text(
-                            text = "sdkfjh",
+                            text = state.id,
                             style = MaterialTheme.typography.bodyLarge,
                             color = Color.DarkGray,
                             modifier = Modifier.padding(horizontal = 20.dp),

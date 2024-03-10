@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun PasswordTextField(
+    onValueChange: (String) -> Unit,
     labelText: String,
     hintText: String,
     modifier: Modifier = Modifier,
@@ -27,14 +28,14 @@ fun PasswordTextField(
         value = password,
         label = { Text(text = labelText) },
         placeholder = { Text(text = hintText) },
-        onValueChange = {
-            password = it
-        },
         singleLine = true,
         maxLines = 1,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         modifier = modifier.padding(horizontal = 15.dp).fillMaxWidth(),
-
+        onValueChange = {
+            password = it
+            onValueChange(it)
+        },
     )
 }
 

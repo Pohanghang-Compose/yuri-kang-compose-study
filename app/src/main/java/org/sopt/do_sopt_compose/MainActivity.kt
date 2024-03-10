@@ -17,11 +17,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.sopt.do_sopt_compose.ui.pages.LoginPage
-import org.sopt.do_sopt_compose.ui.pages.LoginPageState
+import org.sopt.do_sopt_compose.ui.pages.states.LoginPageState
 import org.sopt.do_sopt_compose.ui.pages.MainPage
-import org.sopt.do_sopt_compose.ui.pages.MainPageState
 import org.sopt.do_sopt_compose.ui.pages.SignUpPage
-import org.sopt.do_sopt_compose.ui.pages.SignUpPageState
+import org.sopt.do_sopt_compose.ui.pages.states.MainPageState
+import org.sopt.do_sopt_compose.ui.pages.states.SignUpPageState
 import org.sopt.do_sopt_compose.ui.theme.Do_sopt_composeTheme
 
 class MainActivity : ComponentActivity() {
@@ -63,6 +63,7 @@ private fun NavGraphBuilder.addSignUp(navController: NavController) {
         SignUpPage(
             state = SignUpPageState(),
             onNavigateToLogin = { navController.navigate(Screen.Login.route) },
+            onNavigateToMain = { navController.navigate(Screen.Main.route) },
         )
     }
 }
@@ -70,6 +71,7 @@ private fun NavGraphBuilder.addSignUp(navController: NavController) {
 private fun NavGraphBuilder.addMain(navController: NavController) {
     composable(route = Screen.Main.route) {
         MainPage(
+            state = MainPageState(),
         )
     }
 }

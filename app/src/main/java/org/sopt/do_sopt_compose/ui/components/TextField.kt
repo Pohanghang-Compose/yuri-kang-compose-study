@@ -17,29 +17,31 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun TextField(
-    // value: (String) -> Unit,
+    onValueChange: (String) -> Unit,
     labelText: String,
     hintText: String,
     modifier: Modifier = Modifier,
 ) {
-    var password by rememberSaveable { mutableStateOf("") }
+    var data by rememberSaveable { mutableStateOf("") }
 
     TextField(
-        value = password,
+        value = data,
         placeholder = { Text(text = hintText) },
         label = { Text(text = labelText) },
         onValueChange = {
-            password = it
+            data = it
+            onValueChange(it)
         },
         singleLine = true,
         maxLines = 1,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-        modifier = modifier.padding(horizontal = 15.dp).fillMaxWidth(),
+        modifier = modifier
+            .padding(horizontal = 15.dp)
+            .fillMaxWidth(),
     )
 }
 
 @Preview
 @Composable
 private fun preview_EditText() {
-
 }
