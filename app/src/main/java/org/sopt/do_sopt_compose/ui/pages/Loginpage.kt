@@ -7,8 +7,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.sopt.do_sopt_compose.R
 import org.sopt.do_sopt_compose.ui.UiStatus
 import org.sopt.do_sopt_compose.ui.components.MainButton
 import org.sopt.do_sopt_compose.ui.components.PasswordTextField
@@ -32,13 +34,13 @@ fun LoginPage(
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     item {
                         TextField(
-                            labelText = "ID",
-                            hintText = "아이디를 입력해주세요.",
+                            labelText = stringResource(R.string.id),
+                            hintText = stringResource(R.string.id_hint),
                             modifier = Modifier.padding(vertical = 50.dp),
                         )
                         PasswordTextField(
-                            hintText = "비밀번호를 입력해주세요.",
-                            labelText = "Password",
+                            hintText = stringResource(R.string.password_hint),
+                            labelText = stringResource(R.string.password),
                             modifier = Modifier.padding(bottom = 50.dp),
                         )
 
