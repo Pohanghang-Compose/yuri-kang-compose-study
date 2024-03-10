@@ -19,7 +19,9 @@ import androidx.navigation.compose.rememberNavController
 import org.sopt.do_sopt_compose.ui.pages.LoginPage
 import org.sopt.do_sopt_compose.ui.pages.LoginPageState
 import org.sopt.do_sopt_compose.ui.pages.MainPage
+import org.sopt.do_sopt_compose.ui.pages.MainPageState
 import org.sopt.do_sopt_compose.ui.pages.SignUpPage
+import org.sopt.do_sopt_compose.ui.pages.SignUpPageState
 import org.sopt.do_sopt_compose.ui.theme.Do_sopt_composeTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +29,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Do_sopt_composeTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background,
@@ -60,6 +61,7 @@ private fun NavGraphBuilder.addLogin(navController: NavController) {
 private fun NavGraphBuilder.addSignUp(navController: NavController) {
     composable(route = Screen.SignUp.route) {
         SignUpPage(
+            state = SignUpPageState(),
             onNavigateToLogin = { navController.navigate(Screen.Login.route) },
         )
     }
@@ -67,7 +69,8 @@ private fun NavGraphBuilder.addSignUp(navController: NavController) {
 
 private fun NavGraphBuilder.addMain(navController: NavController) {
     composable(route = Screen.Main.route) {
-        MainPage()
+        MainPage(
+        )
     }
 }
 

@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
 
 @Composable
 fun TitleText(
@@ -25,9 +26,10 @@ fun TitleText(
     ) {
         Text(
             text = text,
-            style = MaterialTheme.typography.titleLarge,
+            style = MaterialTheme.typography.headlineLarge,
             color = Color.Black,
             modifier = Modifier.align(Alignment.Center),
+            maxLines = 10,
         )
     }
 }

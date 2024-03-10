@@ -48,7 +48,7 @@ fun LoginPage(
                             } else if (state.status == UiStatus.Fail) {
                                 onNavigateToSignUp
                             } else {
-                                { }
+                                { onNavigateToMainUp() }
                             },
                             text = "로그인",
                         )
