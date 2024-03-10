@@ -13,20 +13,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun TitleText(
+fun MainText(
     text: String,
     modifier: Modifier = Modifier,
 ) {
     Box(
         modifier = modifier
-            .fillMaxWidth()
-            .padding(vertical = 16.dp),
-        contentAlignment = Alignment.Center
+            .padding(vertical = 3.dp, horizontal = 15.dp),
     ) {
         Text(
             text = text,
             style = MaterialTheme.typography.titleLarge,
-            color = Color.Black,
+            color = Color.DarkGray,
             modifier = Modifier.align(Alignment.Center),
         )
     }
@@ -34,6 +32,6 @@ fun TitleText(
 
 @Preview
 @Composable
-private fun Message_Preview() {
-    TitleText("LogIn")
+private fun MainText_Preview() {
+    MainText("LogIn")
 }
