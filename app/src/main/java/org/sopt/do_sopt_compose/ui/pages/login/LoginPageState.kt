@@ -1,4 +1,4 @@
-package org.sopt.do_sopt_compose.ui.pages.states
+package org.sopt.do_sopt_compose.ui.pages.login
 
 import org.sopt.do_sopt_compose.ui.UiStatus
 

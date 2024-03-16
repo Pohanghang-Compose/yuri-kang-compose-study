@@ -1,4 +1,4 @@
-package org.sopt.do_sopt_compose.ui.pages
+package org.sopt.do_sopt_compose.ui.pages.login
 
 import android.util.Log
 import android.widget.Toast
@@ -20,13 +20,10 @@ import androidx.navigation.NavController
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import org.sopt.do_sopt_compose.R
-import org.sopt.do_sopt_compose.ui.UiStatus
 import org.sopt.do_sopt_compose.ui.components.MainButton
 import org.sopt.do_sopt_compose.ui.components.PasswordTextField
 import org.sopt.do_sopt_compose.ui.components.TextField
 import org.sopt.do_sopt_compose.ui.components.TitleText
-import org.sopt.do_sopt_compose.ui.pages.states.LoginPageSideEffect
-import org.sopt.do_sopt_compose.ui.pages.viewmodels.LoginViewModel
 
 @Composable
 fun LoginPage(

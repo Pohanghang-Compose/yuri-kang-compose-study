@@ -1,4 +1,4 @@
-package org.sopt.do_sopt_compose.ui.pages.states
+package org.sopt.do_sopt_compose.ui.pages.signup
 
 sealed class SignUpSideEffect {
     object ToastSuccessMessage : SignUpSideEffect()

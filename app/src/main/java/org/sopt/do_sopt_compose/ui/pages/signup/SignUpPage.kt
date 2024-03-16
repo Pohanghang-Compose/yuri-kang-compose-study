@@ -1,4 +1,4 @@
-package org.sopt.do_sopt_compose.ui.pages
+package org.sopt.do_sopt_compose.ui.pages.signup
 
 import android.util.Log
 import android.widget.Toast
@@ -18,13 +18,11 @@ import androidx.navigation.NavController
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import org.sopt.do_sopt_compose.R
-import org.sopt.do_sopt_compose.navigation.Screen
+import org.sopt.do_sopt_compose.navigation.AuthScreenItems
 import org.sopt.do_sopt_compose.ui.components.MainButton
 import org.sopt.do_sopt_compose.ui.components.PasswordTextField
 import org.sopt.do_sopt_compose.ui.components.TextField
 import org.sopt.do_sopt_compose.ui.components.TitleText
-import org.sopt.do_sopt_compose.ui.pages.states.SignUpSideEffect
-import org.sopt.do_sopt_compose.ui.pages.viewmodels.SignUpViewModel
 
 @Composable
 fun SignUpPage(
@@ -107,7 +105,7 @@ fun SignUpPage(
                     key = "password",
                     value = state.password,
                 )
-                navController.navigate(Screen.Login.route)
+                navController.navigate(AuthScreenItems.Login.route)
                 navController.popBackStack()
             }
 
