@@ -18,7 +18,7 @@ import androidx.navigation.NavController
 import org.orbitmvi.orbit.compose.collectAsState
 import org.orbitmvi.orbit.compose.collectSideEffect
 import org.sopt.do_sopt_compose.R
-import org.sopt.do_sopt_compose.Screen
+import org.sopt.do_sopt_compose.navigation.Screen
 import org.sopt.do_sopt_compose.ui.components.MainButton
 import org.sopt.do_sopt_compose.ui.components.PasswordTextField
 import org.sopt.do_sopt_compose.ui.components.TextField
