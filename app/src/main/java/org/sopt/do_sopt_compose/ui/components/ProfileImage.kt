@@ -30,7 +30,7 @@ fun ProfileImage(
         elevation = CardDefaults.cardElevation(4.dp),
     ) {
         Box(
-            modifier = Modifier.wrapContentWidth().wrapContentHeight(),
+            modifier = Modifier.wrapContentSize()
         ) {
             Image(
                 painter = painterResource(id = image),

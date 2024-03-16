@@ -18,14 +18,12 @@ fun MainButton(
 ) {
     Button(
         onClick = onClick,
-        content = {
-            Text(text = text)
-        },
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable { onClick() },
-    )
+    ) {
+        Text(text = text)
+    }
 }
 
 @Preview

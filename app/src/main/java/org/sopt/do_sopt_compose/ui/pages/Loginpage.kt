@@ -2,9 +2,9 @@ package org.sopt.do_sopt_compose.ui.pages
 
 import android.util.Log
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -31,63 +31,60 @@ fun LoginPage(
 
     Scaffold(
         topBar = { TitleText(text = "login") },
-        content = {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(it),
-            ) {
-                LazyColumn(modifier = Modifier.fillMaxSize()) {
-                    item {
-                        TextField(
-                            labelText = stringResource(R.string.id),
-                            hintText = stringResource(R.string.id_hint),
-                            modifier = Modifier.padding(vertical = 50.dp),
-                            onValueChange = {
-                                state.id = it
-                                loginViewModel.updateLoginStatus()
-                                Log.d("LoginPage", "Entered ID: $it")
-                                Log.d("LoginPage", "State ID: ${state.id}")
-                            },
-                        )
-                        PasswordTextField(
-                            hintText = stringResource(R.string.password_hint),
-                            labelText = stringResource(R.string.password),
-                            modifier = Modifier.padding(bottom = 50.dp),
-                            onValueChange = {
-                                state.password = it
-                                loginViewModel.updateLoginStatus()
-                                Log.d("LoginPage", "Entered ID: $it")
-                                Log.d("LoginPage", "State ID: ${state.password}")
-                            },
-                        )
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it),
+        ) {
+            Column(modifier = Modifier.fillMaxSize()) {
+                TextField(
+                    labelText = stringResource(R.string.id),
+                    hintText = stringResource(R.string.id_hint),
+                    modifier = Modifier.padding(vertical = 50.dp),
+                    onValueChange = {
+                        state.id = it
+                        loginViewModel.updateLoginStatus()
+                        Log.d("LoginPage", "Entered ID: $it")
+                        Log.d("LoginPage", "State ID: ${state.id}")
+                    },
+                )
+                PasswordTextField(
+                    hintText = stringResource(R.string.password_hint),
+                    labelText = stringResource(R.string.password),
+                    modifier = Modifier.padding(bottom = 50.dp),
+                    onValueChange = {
+                        state.password = it
+                        loginViewModel.updateLoginStatus()
+                        Log.d("LoginPage", "Entered ID: $it")
+                        Log.d("LoginPage", "State ID: ${state.password}")
+                    },
+                )
 
-                        MainButton(
-                            onClick = {
-                                loginViewModel.updateLoginStatus()
-                                Log.d("LoginPage", "State: ${state.status}")
+                MainButton(
+                    onClick = {
+                        loginViewModel.updateLoginStatus()
+                        Log.d("LoginPage", "State: ${state.status}")
 
-                                when (state.status) {
-                                    UiStatus.Success -> {
-                                        onNavigateToMainUp()
-                                    }
+                        when (state.status) {
+                            UiStatus.Success -> {
+                                onNavigateToMainUp()
+                            }
 
-                                    UiStatus.Fail -> {
-                                        onNavigateToSignUp()
-                                    }
+                            UiStatus.Fail -> {
+                                onNavigateToSignUp()
+                            }
 
-                                    else -> {
-                                        // do nothing
-                                    }
-                                }
-                            },
-                            text = "로그인",
-                        )
-                    }
-                }
+                            else -> {
+                                // do nothing
+                            }
+                        }
+                    },
+                    text = "로그인",
+                )
             }
-        },
-    )
+        }
+    }
 }
 
 @Preview

@@ -31,64 +31,62 @@ fun SignUpPage(
     Scaffold(
         topBar =
         { TitleText(text = "SignUp") },
-        content =
-        {
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(it),
-            ) {
-                LazyColumn(modifier = Modifier.fillMaxSize()) {
-                    item {
-                        TextField(
-                            labelText = stringResource(R.string.id),
-                            hintText = stringResource(R.string.id_hint),
-                            modifier = Modifier.padding(vertical = 50.dp),
-                            onValueChange = {
-                                state.id = it
-                                signUpViewModel.updateSignUpStatusIfValid()
-                                Log.d("LoginPage", "Entered ID: $it")
-                                Log.d("LoginPage", "State ID: ${state.id}")
-                            },
-                        )
-                        PasswordTextField(
-                            hintText = stringResource(R.string.password_hint),
-                            labelText = stringResource(R.string.password),
-                            onValueChange = {
-                                state.password = it
-                                signUpViewModel.updateSignUpStatusIfValid()
-                                Log.d("LoginPage", "Entered ID: $it")
-                                Log.d("LoginPage", "State ID: ${state.password}")
-                            },
-                        )
-                        TextField(
-                            labelText = "Nickname",
-                            hintText = "닉네임을 입력해주세요.",
-                            modifier = Modifier.padding(vertical = 50.dp),
-                            onValueChange = {
-                                state.nickname = it
-                                signUpViewModel.updateSignUpStatusIfValid()
-                            },
-                        )
-                        MainButton(
-                            onClick = {
-                                signUpViewModel.updateSignUpStatusIfValid()
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it),
+        ) {
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                item {
+                    TextField(
+                        labelText = stringResource(R.string.id),
+                        hintText = stringResource(R.string.id_hint),
+                        modifier = Modifier.padding(vertical = 50.dp),
+                        onValueChange = {
+                            state.id = it
+                            signUpViewModel.updateSignUpStatusIfValid()
+                            Log.d("LoginPage", "Entered ID: $it")
+                            Log.d("LoginPage", "State ID: ${state.id}")
+                        },
+                    )
+                    PasswordTextField(
+                        hintText = stringResource(R.string.password_hint),
+                        labelText = stringResource(R.string.password),
+                        onValueChange = {
+                            state.password = it
+                            signUpViewModel.updateSignUpStatusIfValid()
+                            Log.d("LoginPage", "Entered ID: $it")
+                            Log.d("LoginPage", "State ID: ${state.password}")
+                        },
+                    )
+                    TextField(
+                        labelText = "Nickname",
+                        hintText = "닉네임을 입력해주세요.",
+                        modifier = Modifier.padding(vertical = 50.dp),
+                        onValueChange = {
+                            state.nickname = it
+                            signUpViewModel.updateSignUpStatusIfValid()
+                        },
+                    )
+                    MainButton(
+                        onClick = {
+                            signUpViewModel.updateSignUpStatusIfValid()
 
-                                when (state.status) {
-                                    UiStatus.Success -> {
-                                        onNavigateToMain()
-                                    }
-
-                                    else -> {
-                                        Log.d("SignUpPage", "SignUp Fail")
-                                    }
+                            when (state.status) {
+                                UiStatus.Success -> {
+                                    onNavigateToMain()
                                 }
-                            },
-                            text = stringResource(R.string.signup_kr),
-                        )
-                    }
+
+                                else -> {
+                                    Log.d("SignUpPage", "SignUp Fail")
+                                }
+                            }
+                        },
+                        text = stringResource(R.string.signup_kr),
+                    )
                 }
             }
-        },
-    )
+        }
+    }
 }

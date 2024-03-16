@@ -1,6 +1,5 @@
 package org.sopt.do_sopt_compose.ui.pages.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.orbitmvi.orbit.ContainerHost
@@ -18,10 +17,6 @@ class LoginViewModel : ContainerHost<LoginPageState, LoginPageSideEffect>, ViewM
     override val container = container<LoginPageState, LoginPageSideEffect>(
         LoginPageState(),
     )
-
-    init {
-        updateLoginStatus()
-    }
 
     fun updateLoginStatus() {
         intent {

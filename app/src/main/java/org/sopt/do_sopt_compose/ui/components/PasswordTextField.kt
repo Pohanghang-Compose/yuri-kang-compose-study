@@ -29,8 +29,7 @@ fun PasswordTextField(
         label = { Text(text = labelText) },
         placeholder = { Text(text = hintText) },
         singleLine = true,
-        maxLines = 1,
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
         modifier = modifier.padding(horizontal = 15.dp).fillMaxWidth(),
         onValueChange = {
             password = it
