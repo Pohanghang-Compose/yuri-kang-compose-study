@@ -9,4 +9,5 @@ data class SignUpPageState(
     var id: String = "",
     var password: String = "",
     var nickname: String = "",
+    var isSignUpEnabled: Boolean = false,
 )

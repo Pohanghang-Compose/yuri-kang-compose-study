@@ -6,4 +6,6 @@ data class LoginPageState(
     var status: UiStatus = UiStatus.Fail,
     var id: String = "",
     var password: String = "",
+    var nickname: String = "",
+    var isLoginEnabled: Boolean = false,
 )

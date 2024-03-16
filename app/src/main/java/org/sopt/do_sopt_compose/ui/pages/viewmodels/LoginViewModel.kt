@@ -1,33 +1,65 @@
 package org.sopt.do_sopt_compose.ui.pages.viewmodels
 
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import org.orbitmvi.orbit.ContainerHost
 import org.orbitmvi.orbit.syntax.simple.intent
+import org.orbitmvi.orbit.syntax.simple.postSideEffect
 import org.orbitmvi.orbit.syntax.simple.reduce
 import org.orbitmvi.orbit.viewmodel.container
-import org.sopt.do_sopt_compose.ui.UiStatus
 import org.sopt.do_sopt_compose.ui.pages.states.LoginPageSideEffect
 import org.sopt.do_sopt_compose.ui.pages.states.LoginPageState
-import org.sopt.do_sopt_compose.ui.pages.states.SignUpPageState
 
 class LoginViewModel : ContainerHost<LoginPageState, LoginPageSideEffect>, ViewModel() {
-    private val _signUpState = MutableStateFlow(SignUpPageState())
 
     override val container = container<LoginPageState, LoginPageSideEffect>(
         LoginPageState(),
     )
 
-    fun updateLoginStatus() {
+    fun updateLoginId(id: String) {
         intent {
             reduce {
-                state.copy(id = state.id, password = state.password)
+                state.copy(id = id)
             }
-            if ((state.id == _signUpState.value.id) && (state.password == _signUpState.value.password)) {
-                reduce { state.copy(status = UiStatus.Success) }
-            } else {
-                reduce { state.copy(status = UiStatus.Fail) }
+        }
+    }
+
+    fun updateLoginNickname(nickname: String) {
+        intent {
+            reduce {
+                state.copy(nickname = nickname)
             }
+        }
+    }
+
+    fun updateLoginPassword(password: String) {
+        intent {
+            reduce {
+                state.copy(password = password)
+            }
+        }
+    }
+
+    fun chcekValidLogin() {
+        intent {
+            if (state.id.isNotEmpty() && state.password.isNotEmpty()) {
+                reduce {
+                    state.copy(isLoginEnabled = true)
+                }
+            }
+        }
+    }
+
+    fun loginFailedClicked() {
+        intent {
+            postSideEffect(LoginPageSideEffect.NavigateToSignUp)
+            postSideEffect(LoginPageSideEffect.ToastFailedMessage)
+        }
+    }
+
+    fun loginSuccessClicked() {
+        intent {
+            postSideEffect(LoginPageSideEffect.NavigateToMain)
+            postSideEffect(LoginPageSideEffect.ToastSuccessMessage)
         }
     }
 }

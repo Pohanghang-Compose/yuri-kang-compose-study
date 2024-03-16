@@ -51,9 +51,7 @@ private fun NavGraphBuilder.addLogin(navController: NavController) {
     composable(route = Screen.Login.route) {
         // 버튼 클릭 시 화면 이동
         LoginPage(
-            state = LoginPageState(),
-            onNavigateToSignUp = { navController.navigate(Screen.SignUp.route) },
-            onNavigateToMainUp = { navController.navigate(Screen.Main.route) },
+            navController = navController,
         )
     }
 }
@@ -61,9 +59,7 @@ private fun NavGraphBuilder.addLogin(navController: NavController) {
 private fun NavGraphBuilder.addSignUp(navController: NavController) {
     composable(route = Screen.SignUp.route) {
         SignUpPage(
-            state = SignUpPageState(),
-            onNavigateToLogin = { navController.navigate(Screen.Login.route) },
-            onNavigateToMain = { navController.navigate(Screen.Main.route) },
+            navController = navController,
         )
     }
 }
@@ -71,7 +67,7 @@ private fun NavGraphBuilder.addSignUp(navController: NavController) {
 private fun NavGraphBuilder.addMain(navController: NavController) {
     composable(route = Screen.Main.route) {
         MainPage(
-            state = MainPageState(),
+            navController = navController,
         )
     }
 }

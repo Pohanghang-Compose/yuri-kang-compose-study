@@ -11,26 +11,36 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import org.orbitmvi.orbit.compose.collectAsState
 import org.sopt.do_sopt_compose.R
 import org.sopt.do_sopt_compose.ui.components.ProfileImage
 import org.sopt.do_sopt_compose.ui.components.TitleText
-import org.sopt.do_sopt_compose.ui.pages.states.MainPageState
 import org.sopt.do_sopt_compose.ui.pages.viewmodels.MainViewModel
 
 @Composable
 fun MainPage(
-    state: MainPageState = MainPageState(),
+    navController: NavController,
 ) {
-    val mainViewModel: MainViewModel = viewModel()
-    mainViewModel.updateMainStatus()
+    val viewModel: MainViewModel = viewModel()
+    val state by viewModel.collectAsState()
+    LaunchedEffect(key1 = true) {
+        navController.previousBackStackEntry?.savedStateHandle?.run {
+            viewModel.updateMainState(
+                id = get<String>("id") ?: "",
+                nickname = get<String>("nickname") ?: "",
+            )
+        }
+    }
 
     Scaffold(
         topBar = { TitleText(text = "홈 화면") },
@@ -84,10 +94,4 @@ fun MainPage(
             }
         },
     )
-}
-
-@Preview
-@Composable
-fun MainPage_Preview() {
-    MainPage()
 }
