@@ -14,10 +14,10 @@ import androidx.navigation.NavController
 import org.sopt.do_sopt_compose.data.DummyFriendData
 import org.sopt.do_sopt_compose.data.Friends
 import org.sopt.do_sopt_compose.navigation.BottomNavigation
-import org.sopt.do_sopt_compose.ui.components.FriendsProfileBirthday
-import org.sopt.do_sopt_compose.ui.components.FriendsProfileMe
-import org.sopt.do_sopt_compose.ui.components.FriendsProfileMusic
-import org.sopt.do_sopt_compose.ui.components.FriendsProfileNormal
+import org.sopt.do_sopt_compose.ui.components.profile.FriendsProfileBirthday
+import org.sopt.do_sopt_compose.ui.components.profile.FriendsProfileMe
+import org.sopt.do_sopt_compose.ui.components.profile.FriendsProfileMusic
+import org.sopt.do_sopt_compose.ui.components.profile.FriendsProfileNormal
 import org.sopt.do_sopt_compose.ui.components.MainText
 
 @Composable
@@ -26,6 +26,8 @@ fun HomePage(
 ) {
 
     val friendsList = remember { DummyFriendData.dummyFriendList }
+    // initial composition 했을 때 저장한 값을 recomposition(상태가 변했을 때)도 데이터 그대로 사용할 수 있게 도와주는
+
     Scaffold(
         topBar = { MainText(text = "Home", modifier = Modifier
             .fillMaxWidth()

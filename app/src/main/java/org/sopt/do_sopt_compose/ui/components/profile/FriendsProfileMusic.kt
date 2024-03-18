@@ -1,10 +1,11 @@
-package org.sopt.do_sopt_compose.ui.components
+package org.sopt.do_sopt_compose.ui.components.profile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -12,19 +13,27 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import org.sopt.do_sopt_compose.ui.components.MelonMusic
+
 
 @Composable
-fun FriendsProfileNormal(
+fun FriendsProfileMusic(
     profileImageUrl: Int,
     nickname: String,
-    statusMessage: String?,
+    music: String,
+    statusMessage: String?
 ) {
-    Box(modifier = Modifier.fillMaxSize().padding(10.dp)
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(5.dp)
     ) {
         Row {
             Image(
@@ -48,9 +57,12 @@ fun FriendsProfileNormal(
                     textAlign = TextAlign.Center,
                     fontStyle = FontStyle.Italic,
                     modifier = Modifier.padding(start = 8.dp),
-                    maxLines = 1
-                )
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
+                    )
             }
+            MelonMusic(music = music)
+
         }
     }
 }

@@ -1,10 +1,10 @@
-package org.sopt.do_sopt_compose.ui.components
+package org.sopt.do_sopt_compose.ui.components.profile
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontStyle
@@ -21,15 +20,13 @@ import androidx.compose.ui.unit.dp
 
 
 @Composable
-fun FriendsProfileMusic(
+fun FriendsProfileMe(
     profileImageUrl: Int,
     nickname: String,
-    music: String,
-    statusMessage: String?
 ) {
     Box(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(5.dp)
     ) {
         Row {
@@ -37,32 +34,17 @@ fun FriendsProfileMusic(
                 bitmap = ImageBitmap.imageResource(profileImageUrl),
                 contentDescription = null,
                 modifier = Modifier
-                    .size(50.dp)
+                    .size(80.dp)
                     .clip(CircleShape)
             )
 
-            Column {
-                Text(
-                    text = nickname,
-                    textAlign = TextAlign.Center,
-                    fontStyle = FontStyle.Normal,
-                    modifier = Modifier.padding(start = 8.dp)
-                )
-
-                Text(
-                    text = statusMessage ?: "",
-                    textAlign = TextAlign.Center,
-                    fontStyle = FontStyle.Italic,
-                    modifier = Modifier.padding(start = 8.dp),
-                    maxLines = 1
-                )
-            }
             Text(
-                text = music,
-                modifier = Modifier.padding(start = 8.dp),
-                color = Color.Blue
+                text = nickname,
+                textAlign = TextAlign.Center,
+                fontStyle = FontStyle.Normal,
+                modifier = Modifier
+                    .padding(start = 8.dp)
             )
-
         }
     }
 }
