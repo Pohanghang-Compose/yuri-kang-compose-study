@@ -66,4 +66,15 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // Navigation Compose
+    implementation("androidx.navigation:navigation-compose:2.4.0-alpha10")
+    implementation("androidx.navigation:navigation-common-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-runtime-ktx:2.7.7")
+
+    // Orbit
+    implementation("org.orbit-mvi:orbit-core:4.4.0")
+    implementation("org.orbit-mvi:orbit-viewmodel:4.4.0")
+    implementation("org.orbit-mvi:orbit-compose:4.4.0")
+    testImplementation("org.orbit-mvi:orbit-test:4.4.0")
 }
