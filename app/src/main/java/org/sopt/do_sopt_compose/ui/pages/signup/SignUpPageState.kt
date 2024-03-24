@@ -1,4 +1,4 @@
-package org.sopt.do_sopt_compose.ui.pages.states
+package org.sopt.do_sopt_compose.ui.pages.signup
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf

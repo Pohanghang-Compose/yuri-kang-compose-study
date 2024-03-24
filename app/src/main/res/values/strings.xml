@@ -11,4 +11,7 @@
     <string name="failed_signup">회원가입 실패</string>
     <string name="nickname">Nickname</string>
     <string name="nickname_hint">닉네임을 입력해주세요.</string>
+    <string name="bottom_navi_ando">안두</string>
+    <string name="bottom_navi_home">홈</string>
+    <string name="bottom_navi_mypage">마이페이지</string>
 </resources>

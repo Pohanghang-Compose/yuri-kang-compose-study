@@ -1,4 +1,4 @@
-package org.sopt.do_sopt_compose.ui.pages
+package org.sopt.do_sopt_compose.ui.pages.mypage
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,7 +25,7 @@ import org.orbitmvi.orbit.compose.collectAsState
 import org.sopt.do_sopt_compose.R
 import org.sopt.do_sopt_compose.ui.components.ProfileImage
 import org.sopt.do_sopt_compose.ui.components.TitleText
-import org.sopt.do_sopt_compose.ui.pages.viewmodels.MainViewModel
+import org.sopt.do_sopt_compose.navigation.BottomNavigation
 
 @Composable
 fun MainPage(
@@ -33,6 +33,7 @@ fun MainPage(
 ) {
     val viewModel: MainViewModel = viewModel()
     val state by viewModel.collectAsState()
+
     LaunchedEffect(key1 = true) {
         navController.previousBackStackEntry?.savedStateHandle?.run {
             viewModel.updateMainState(
@@ -44,6 +45,7 @@ fun MainPage(
 
     Scaffold(
         topBar = { TitleText(text = "홈 화면") },
+        bottomBar = { BottomNavigation(navController = navController) },
         content = {
             Box(
                 modifier = Modifier
